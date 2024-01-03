@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block titulo %}REGISTRO{% endblock %}
+
+{% block content %}
+<div class="col-12 col-lg-6 offset-lg-3" div-registro>
+<h1>Registro</h1>
+<p class="text-danger">{{error}}</p>
+<form action="{% url 'registro' %}" method="POST">
+    {% csrf_token %}
+       <form>
+         <div class="mb-3">
+            <label for="username" class="form-label">username</label>
+            <input type="text" class="form-control" id="username" name='username' required value="{{ username|default:'' }}">
+
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name='nombre' required value="{{ nombre|default:'' }}">
+
+            <label for="apeliido" class="form-label">Apeliido</label>
+            <input type="text" class="form-control" id="apellido" name='apellido' required value="{{ apellido|default:'' }}">
+
+            <label for="email" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control" id="email" name='email' required value="{{ email|default:'' }}">
+        
+            <label for="password" class="form-label">Clave</label>
+            <input type="password" class="form-control" id="password" name='password' required value="{{ password|default:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">REGISTRAR</button>
+      </form>
+</form>
+<p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Conectate</a></p>
+</div>
+
+{% endblock %}
+
+
